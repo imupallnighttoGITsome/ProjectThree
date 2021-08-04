@@ -6,9 +6,8 @@ import { useHistory } from 'react-router-dom'
 
 const EventUpdateForm = ({match, pastEvent}) => {
     const history = useHistory()
-    //why is this here?
     const [event, setEvent] = useState([]);
-    //
+
     console.log(pastEvent)
     const [updateForm, setUpdateForm] = useState([]);
     console.log(event);

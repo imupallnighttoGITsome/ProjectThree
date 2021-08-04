@@ -25,7 +25,7 @@ const EventList = () => {
   if (eventData) {
       return (
         <div>
-        <Link to="/events/add" user={userData}>Add Event</Link>
+        <Link to="/events/add">Add Event</Link>
         <section>
           {eventData.map((event) => (
               <div  key={event.id} onChange={handleChange}>

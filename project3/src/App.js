@@ -12,11 +12,11 @@ import ResourcePage from './components/ResourcePage';
 
 
 // general components
-import EventForm from "./components/events-group/event-forms/EventForm";
-import EventUpdateForm from "./components/events-group/event-forms/EventUpdateForm";
-import EventView from "./components/events-group/event-view-update-delete/event-view";
-import CityDirectory from "./components/events-group/events-directory/city-directory";
-import CityHomePage from "./components/events-group/eventsHomePage/city-homepage";
+import EventForm from "./components/EventForm";
+import EventUpdateForm from "./components/EventUpdateForm";
+import EventView from "./components/EventView";
+import CityDirectory from "./components/city-directory";
+import EventList from "./components/EventList"
 // auth
 
 
@@ -58,20 +58,20 @@ function App() {
       <Route exact path="/events" component={CityDirectory} />
       <Route exact path="/event/:id"
           render={(routerProps) => (
-            <EventView currentUser={userData} match={routerProps.match}/>
+            <EventView currentUser={currentUser} match={routerProps.match}/>
           )}/>
-      <Route exact path="/eventadd" render={routerProps => <EventForm currentUser={userData} match={routerProps.match}/>} />
+      <Route exact path="/event/add" render={routerProps => <EventForm currentUser={currentUser} match={routerProps.match}/>} />
         <Route exact path="/event/edit/:id"
           render={(routerProps) => (
             <EventUpdateForm
               // setEventView={setEventView}
-              // match={routerProps.match}
+              match={routerProps.match}
               // eventView={eventView}
             />
           )}
         />
       <Route exact path="/events/:city"
-          render={(routerProps) => <CityHomePage match={routerProps.match} />}
+          render={(routerProps) => <EventList match={routerProps.match} />}
         />
       <Route exact path="/events/add" component={EventForm} />
 

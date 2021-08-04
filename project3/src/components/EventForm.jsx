@@ -1,17 +1,14 @@
 import React, { useState, useContext } from "react";
-import {UserContext} from "../../../App";
 import axios from "axios";
 // possibly remove because of differt methods
-import EventView from "../event-view-update-delete/event-view";
-import DateTimePicker from "react-datetime-picker";
+import EventView from "./EventView";
 import { useHistory } from "react-router-dom";
 // import { Redirect } from "react-router";
 
 
 const EventForm = ({currentUser}) => {
-const { userData, setUserData } = useContext(UserContext);
 let history = useHistory();
-
+console.log(currentUser)
   const blankForm = {
     name: "",
     addedBy: "",
@@ -40,7 +37,7 @@ let history = useHistory();
     event.preventDefault();
     const url = "http://localhost:4000/event/add";
     axios
-    .post(url, { ...eventForm, dateAndTime: date, addedBy: userData.user.userName })
+    .post(url, { ...eventForm, dateAndTime: date, addedBy: currentUser.userName })
     .then((res) => {
         history.push(`/event/${res.data._id}`);
         //console.log(eventForm.location);
